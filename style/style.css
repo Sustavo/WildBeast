@@ -1,3 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Vollkorn:ital,wght@0,400;0,700;1,400&display=swap");
+body, p, h1, ul, li, blockquote {
+  padding: 0px;
+  margin: 0px;
+}
 
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Vollkorn", Georgia, serif;
+}
+
+img {
+  max-width: 100px;
+}
+
+.structure {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) 3fr 300px;
+  grid-template-areas: "header header header" "sidenav content anuncios" "footer footer footer";
+}
+.structure header {
+  grid-area: header;
+}
+.structure .sidenav {
+  grid-area: sidenav;
+}
+.structure .content {
+  grid-area: content;
+}
+.structure .ads {
+  grid-area: anuncios;
+}
+.structure footer {
+  grid-area: footer;
+}
 
 /*# sourceMappingURL=style.css.map */
