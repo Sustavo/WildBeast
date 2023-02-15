@@ -57,6 +57,22 @@ img {
 }
 .structure .sidenav {
   grid-area: sidenav;
+  background: #fafbfc;
+  padding: 30px;
+}
+.structure .sidenav li a {
+  display: block;
+  min-width: 60px;
+  max-width: 100px;
+  margin: 0px auto 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px 0px rgba(44, 44, 44, 0.15);
+  transition: 0.1s ease-out;
+}
+.structure .sidenav li a:hover {
+  background: #b07dfb;
 }
 .structure .content {
   grid-area: content;
