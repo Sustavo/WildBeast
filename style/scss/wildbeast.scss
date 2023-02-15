@@ -3,7 +3,9 @@ body {
 }
 
 img {
+    display: block;
     max-width: 100%;
+    border-radius: 5px;
 }
 
 // GRID GERAL
@@ -83,10 +85,24 @@ img {
 
     .ads {
         grid-area: anuncios;
+
+        background: #fafbfc;
+        display: grid;
+        align-content: start;
+        padding: 30px;
+        grid-gap: 30px;
     }
 
     footer {
         grid-area: footer;
+        background: linear-gradient(135deg, #8844ee, #b07dfb);
+
+        p {
+            color: white;
+
+            text-align: center;
+            padding: 30px;
+        }
     }
 }
 
