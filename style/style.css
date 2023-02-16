@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Vollkorn:ital,wght@0,400;0,700;1,400&display=swap");
 body, p, h1, ul, li, blockquote {
   padding: 0px;
@@ -15,10 +16,15 @@ a {
 body {
   font-family: "Vollkorn", Georgia, serif;
 }
-
-img {
+body p {
+  font-size: 1.2em;
+  align-items: 1.6;
+  letter-spacing: 0, 5em;
+  color: rgba(0, 0, 0, 0.7);
+}
+body img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   border-radius: 5px;
 }
 
@@ -131,26 +137,26 @@ img {
 .structure main .information p + p {
   margin-top: 30px;
 }
-.structure .imagem-1 {
+.structure main .imagem-1 {
   grid-row: span 2;
   align-self: end;
 }
-.structure .destaque {
+.structure main .destaque {
   font-size: 0.875em;
   color: #b07dfb;
   max-width: 16em;
 }
-.structure .imagem-2 {
+.structure main .imagem-2 {
   align-self: end;
 }
-.structure .quote, .structure .atributes {
+.structure main .quote, .structure main .atributes {
   align-self: start;
   padding: 30px;
   border-radius: 5px;
   box-shadow: 5px 5px 15px 0px rgba(44, 44, 44, 0.15);
   background: linear-gradient(135deg, #8844ee, #b07dfb);
 }
-.structure .quote p {
+.structure main .quote p {
   font-size: 1.5em;
   font-style: italic;
   text-align: center;
@@ -158,13 +164,13 @@ img {
   margin: 0 auto;
   color: white;
 }
-.structure .atributes li {
+.structure main .atributes li {
   color: white;
   font-family: Courier, monospace;
   font-size: 1.125em;
   padding: 15px;
 }
-.structure .atributes li + li {
+.structure main .atributes li + li {
   border-top: 2px solid #b07dfb;
 }
 .structure .ads {
@@ -174,6 +180,7 @@ img {
   align-content: start;
   padding: 30px;
   grid-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 .structure footer {
   grid-area: footer;
@@ -184,15 +191,70 @@ img {
   text-align: center;
   padding: 30px;
 }
-.structure p {
-  font-size: 1.2em;
-  align-items: 1.6;
-  letter-spacing: 0, 5em;
-  color: rgba(0, 0, 0, 0.7);
-}
 
 .col-wide {
   grid-column: 1/-1;
+}
+
+@keyframes seta {
+  from {
+    right: 30px;
+  }
+  to {
+    right: 20px;
+  }
+}
+@media (max-width: 1200px) {
+  .structure {
+    grid-template-areas: "header header header" "sidenav content content" "sidenav anuncios anuncios" "footer footer footer";
+  }
+}
+@media (max-width: 760px) {
+  .structure {
+    grid-template-columns: 100%;
+    grid-template-areas: "header" "sidenav" "content" "anuncios" "footer";
+  }
+  .structure header {
+    grid-template-columns: auto;
+  }
+  .structure header .logo {
+    margin-bottom: 20px;
+  }
+  .structure header nav a {
+    font-size: 1em;
+  }
+  .structure header li + li {
+    margin-left: 10px;
+  }
+  .structure .sidenav {
+    position: relative;
+    padding: 0 30px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .structure .sidenav::after {
+    content: "⟶";
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    color: rgba(0, 0, 0, 0.3);
+    animation: seta 0.5s ease-in 0s infinite alternate;
+  }
+  .structure .sidenav ul {
+    display: flex;
+  }
+  .structure .sidenav ul li {
+    flex: 1 0 60px;
+  }
+  .structure .sidenav ul li a {
+    margin: 30px 30px 30px 0;
+  }
+}
+@media (max-width: 600px) {
+  .structure main {
+    grid-template-columns: auto;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

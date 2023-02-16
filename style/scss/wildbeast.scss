@@ -1,11 +1,18 @@
 body {
     font-family: "Vollkorn", Georgia, serif;
-}
 
-img {
-    display: block;
-    max-width: 100%;
-    border-radius: 5px;
+    p {
+        font-size: 1.2em;
+        align-items: 1.6;
+        letter-spacing: -0,005em;
+        color: rgba(0, 0, 0, .7);
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        border-radius: 5px;
+    }
 }
 
 // GRID GERAL
@@ -149,55 +156,57 @@ img {
                 margin-top: 30px;
             }
         }
-    }
 
-    .imagem-1 {
-        grid-row: span 2;
-        align-self: end;
-    }
-
-    .destaque {
-        font-size: 0.875em;
-        color: #b07dfb;
-        max-width: 16em;
-    }
-
-    .imagem-2 {
-        align-self: end;
-    }
-
-    .quote, .atributes {
-        align-self: start;
-        padding: 30px;
-        border-radius: 5px;
-        box-shadow: 5px 5px 15px 0px rgba(44, 44, 44, 0.15);
-        background: linear-gradient(135deg, #8844ee, #b07dfb);
-    }
-
-    .quote {
-        p{
-            font-size: 1.5em;
-            font-style: italic;
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
-            color: white;
+        .imagem-1 {
+            grid-row: span 2;
+            align-self: end;
+        }
+    
+        .destaque {
+            font-size: 0.875em;
+            color: #b07dfb;
+            max-width: 16em;
+        }
+    
+        .imagem-2 {
+            align-self: end;
+        }
+    
+        .quote, .atributes {
+            align-self: start;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 15px 0px rgba(44, 44, 44, 0.15);
+            background: linear-gradient(135deg, #8844ee, #b07dfb);
+        }
+    
+        .quote {
+            p{
+                font-size: 1.5em;
+                font-style: italic;
+                text-align: center;
+                max-width: 500px;
+                margin: 0 auto;
+                color: white;
+            }
+        }
+    
+        .atributes {
+            li {
+                color: white;
+                font-family: Courier, monospace;
+                font-size: 1.125em;
+                padding: 15px;
+            }
+    
+            li + li {
+                border-top: 2px solid #b07dfb;
+    
+            }
         }
     }
 
-    .atributes {
-        li {
-            color: white;
-            font-family: Courier, monospace;
-            font-size: 1.125em;
-            padding: 15px;
-        }
 
-        li + li {
-            border-top: 2px solid #b07dfb;
-
-        }
-    }
 
     .ads {
         grid-area: anuncios;
@@ -207,6 +216,7 @@ img {
         align-content: start;
         padding: 30px;
         grid-gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 
     footer {
@@ -221,14 +231,102 @@ img {
         }
     }
 
-    p {
-        font-size: 1.2em;
-        align-items: 1.6;
-        letter-spacing: -0,005em;
-        color: rgba(0, 0, 0, .7);
-    }
+    
 }
 
 .col-wide {
     grid-column: 1 / -1;
+}
+
+//KeyFrames
+@keyframes seta {
+    from {
+        right: 30px;
+    } to {
+        right: 20px;
+    }
+}
+
+
+
+//Media Frame
+@media (max-width: 1200px) {
+    .structure {
+        grid-template-areas: 
+        "header header header"
+        "sidenav content content"
+        "sidenav anuncios anuncios"
+        "footer footer footer"
+        ;
+    }
+}
+
+@media (max-width: 760px) {
+    .structure {
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "header"
+        "sidenav"
+        "content"
+        "anuncios"
+        "footer"
+        ;
+
+        header {
+            grid-template-columns: auto;
+            
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            nav a {
+                font-size: 1em;
+            }
+
+            li + li {
+                margin-left: 10px;
+            }
+        }
+
+        .sidenav {
+            position: relative;
+            padding: 0 30px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: -ms-autohiding-scrollbar;
+
+            &::after {
+                content : '⟶';
+                position: absolute;
+                top: 5px;
+                right: 30px;
+                color: rgba(0, 0, 0, .3);
+                animation: seta .5s ease-in 0s infinite alternate;
+            }
+
+            ul {
+                display: flex;
+
+                li {
+                    flex: 1 0 60px;
+
+                    a {
+                        margin: 30px 30px 30px 0;
+                    }
+                }
+            }
+
+            
+        }
+    }
+
+}
+
+@media (max-width: 600px) {
+    .structure {
+        main {
+            grid-template-columns: auto;
+        }
+        
+    }
 }
